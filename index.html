@@ -12,109 +12,11 @@
         <a href="/lessonOne">Lesson One</a>
         <a href="/numbersOne">Numbers One</a>
         <a href="/numbersTwo">Numbers Two</a>
+        <a href="/numbersThree">Numbers Three</a>
     </ul>
 
     <script>
-        // JavaScript only has one number type
-        let z = 3.14;
-        let x = 3;
-
-        // You can use scientific notation! That's cool lol
-        let c = 123e5; // 12300000
-        let v = 123e-5; // 0.00123
-
-        // Integers are accurate up to 15 digits
-        let b = 999999999999999;   // x will be 999999999999999
-        let n = 9999999999999999;  // y will be 10000000000000000
-
-        // Floating precision
-        let m = 0.2 + 0.1;
-        let a = (0.2 * 10 + 0.1 * 10) / 10;
-
-        // JavaScript uses + for addition and concatenation
-        // Numbers are added.
-        // Strings are concatenated
-
-        // Concatenation
-        let s = "10";
-        let d = "20";
-        let f = s + d;
-
-        // String + number = concatenation
-        let g = 10;
-        let h = "20";
-        let j = g + h;
-
-        // More complex example of concatenation
-        let k = 10;
-        let l = 20;
-        let q = "The result is: " + l + k;
-
-        // More complex example of concatenation
-        let w = 10;
-        let e = 20;
-        let r = "30";
-        let t = w + e + r;
-
-        // JavaScript strings can have numeric content
-        let y = 100; // y is a number
-        let u = "100" // u is a string
-
-        // JS will try to convert strings to numbers in all numeric operations
-        let i = "100";
-        let o = "10";
-        let p = i * o; // This will work: (/), (-), (*)
-
-        let zz = "100";
-        let xx = "10";
-        let cc = i + o; // The addition operator will not work because it concatenates strings
-
-        // NaN = Not a Number - Word indicating that something is not a legal number
-        let vv = 100 / "Apple";
-
-        // Use "isNAN()" to find out if a value is not a number
-        isNaN(vv);
-
-        // Infinity - or -Infinity is the value JS will return if you calculate a number outside the largest possible number
-        let myNumber = 2;
-        // Execute until infinity
-        while (myNumber != Infinity) {
-            myNumber = myNumber * myNumber;
-        } 
         
-
-        // diveideByZero = 2 / 0;
-
-        // Hexadecimal - JS interprets numeric constants as hexadecimal if they are preceeded by 0x
-        let bb = 0xFF;
-
-        // By default, JS displays numbers as base 10 decimals.
-        // But you can use the "toString" method output numbers from base 2 to base 36
-        // Hexadecimal is base 16. Decimal is base 10. Octal is base 8. Binary is base 2
-        let nn = 32;
-        nn.toString(32);
-        nn.toString(16);
-        nn.toString(12);
-        nn.toString(10);
-        nn.toString(8);
-        nn.toString(2);
-
-        // JS Numbers as Objects
-        let mm = 123;
-
-        // But numbers can also be defined as objects with the keyword "new"
-        let aa = new Number(123);
-
-        // Dont use new to create Number objects though.
-        // "new" will slow down code and execution speed
-        // Number objects will produce unexpected results
-
-        let ss = 500;
-        let dd = new Number(500);
-        // == equals equivalent
-        // === equals unequivalent
-
-        alert(ss === dd)
     </script>
 </body>
 </html>
