@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Foundations</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js"></script>
+</head>
+<body>
+    <script>
+        // JavaScript goes here
+        console.log("Where Dewey?")
+
+        // let message; 
+        // message = 'Hey!';
+
+        let message = 'ayyyowhaddupitschyaboi!'
+
+        alert(message);
+
+        let user = 'Dohn';
+        let age = 25; 
+        let warning = "It's Dohn Weck!";
+
+        let hello = 'hey word';
+        let massage = hello;
+
+        alert(hello); /* hey word */
+        alert(massage); /* hey word */
+
+        let $ = 1;
+        let _ = 2;
+        alert($ + _);
+
+        const myBirthday = '12.14';
+
+        const COLOR_RED = "#F00";
+        const COLOR_GREEN = "#0F0";
+        const COLOR_BLUE = "#00F";
+        const COLOR_ORANGE = "#FF7F00";
+
+        let color = COLOR_BLUE;
+        alert(color);
+
+        let name = 'Geohn';
+        let admin = name;
+
+        alert(admin);
+
+        let ourPlanetName = 'Earth';
+        let currentUserName = 'admin';
+
+        alert(admin);
+    </script>
+</body>
+</html>
