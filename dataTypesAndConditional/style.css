@@ -1,4 +1,14 @@
 body {
     background-color: black;
-    color: white;
+    color: rgba(255, 255, 255, 0.863);
+    margin: 100px;
+}
+
+li {
+    padding: 4px;
+}
+
+h1, h2 {
+    text-align: center;
+    padding-top: 50px;
 }
