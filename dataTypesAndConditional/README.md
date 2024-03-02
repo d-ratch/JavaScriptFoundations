@@ -1,0 +1,1 @@
+The odin project data type and conditionals lesson follow along
