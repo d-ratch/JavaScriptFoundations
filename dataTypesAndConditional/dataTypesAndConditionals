@@ -176,7 +176,7 @@
         <p>
             If a variable is declared, but not assigned, then its value is undefined:
                 <script>
-                    let age;
+                    let rage;
 
                     // alert(age); shows 'undefined'
                 </script>
