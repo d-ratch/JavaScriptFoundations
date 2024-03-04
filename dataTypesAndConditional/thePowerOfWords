@@ -9,7 +9,8 @@
 </head>
     <body>
         <ul>
-            <a href="/dataTypesAndConditional/">Ape One</a>
+            <a href="dataTypesAndConditional">Ape One</a>
+            <a href="thePowerOfWords">Ape One</a>
         </ul>
 
         <h1>NONE OF THE CONTENT IS MY OWN</h1>
