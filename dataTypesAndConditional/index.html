@@ -13,198 +13,159 @@
             <a href="thePowerOfWords">Ape One</a>
         </ul>
 
-        <h1>NONE OF THE CONTENT IS MY OWN</h1>
-        <h1>EVERYTHING IS COPIED FROM: <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings">MDN Strings Tutorial</a> </h1>
-        
-        <h1> Handling Text - Strings in JavaScript</h1> 
+    <h1>NONE OF THE CONTENT IS MY OWN</h1>
+    <h1>EVERYTHING IS COPIED FROM: <a href=https://www.w3schools.com/js/js_string_methods.asp>W3 String Methods</a> </h1>
+    
+    <h1> JavaScript String Methods</h1> 
 
-        <h2>The power of words</h2>
+    <h2>JavaScript String Length</h2>
             <p>
-                Words are very important to humans - they are a large part of how we communicate. Since the web is a largely text-based medium designed to allow humans to communicate and share information, it is useful to have control over the words that appear on it.
-            </p>
-            <p>
-               HTML provides structure and meaning to text, CSS allows us to precisely style it, and JavaScript offers many features for manupulating strings. These include: creating custom messages and prompts, showing the right text labels when needed, sorting terms into the desired order, and much more.
-            </p>
-
-        <h2>Declaring Strings</h2>
-            <p>
-                Strings are dealt with similarly to numbers at first glance, but when you dig deeper you'll start to see some notable differences.
-                <script>
-                    const string = "The revolution will not be televised.";
-                    console.log(string);
-                </script>
+                The length property returns the length of the String
+                    <script>
+                        let text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        let length = text.length;
+                    </script>
             </p>
 
-            <p>
-                Just like we did with numbers, we are declaring a variable, initializing it with a string value, and then returning the value. The only difference is that when writing a string, you to surround the value with quotes.
-            </p>
-
-        <h2>I'm going to stop copying websites word for word.</h2>
-
-            <script>
-                const single = 'Single quotes';
-                const double = "Double quotes";
-                const backTic = `Back Ticks`;
-
-                console.log(single)
-                console.log(double)
-                console.log(backTic)
-            </script>
-
-            <p>
-                Strings declared using backticks are a special kind of string called a template literal. In most ways, template literals are like normal strings, but they have some special properties:
-
+    <h2>Extracting String Characters</h2>
+        <p>
+            There are four methods for extracting string characters:
                 <ul>
-                    <li>You can embed JavaScript in them</li>
-                    <li>You can declare template literals over multiple lines</li>
+                    <li>The at(position) Method</li>
+                    <li>The charAt(position) Method</li>
+                    <li>The charCodeAt(position) Method</li>
+                    <li>Using property access [] like in arrays</li>
                 </ul>
-            </p>
+        </p>
 
-        <h2>Embedding in JavaScript</h2>
-            <p>
-                Inside a template literal (backtick), you can wrap JavaScript variables inside "${}", and the result will be included in the string:
+    <h3>JavaScript String charAt( )</h3>
+        <p>
+            The charAt( ) method returns the character at a specified index (position) in a string:
+                <script>
+                    let txt = "Jell-o World!";
+                    let char = txt.charAt(0);
+                    console.log(char);
+                </script>
+        </p>
+
+    <h3>JavaScript String charCodeAt( )</h3>
+        <p>
+            The charCodeAt( ) method returns the code of the character at a specified index in a string:
+        </p>
+        <p>
+            The  method returns a UTF-16 code (an integer between 0 and 65535)
+                <script>
+                    let charCode = txt.charCodeAt(0);
+                    console.log(charCode);
+                </script>
+        </p>
+    
+    <h3>JavaScript String at( )</h3>
+        <p>
+            ES2022 introduced the string method at( ):
+                <script>
+                    const name = "D-Ratch";
+                    let letter = name.at(2);
+                    let ketter = name[4];
+                    console.log(ketter);
+                </script>
+        </p>
+        <p>
+            The at( ) method returns the character at a specified index (position) in a string.
+        </p>
+        <p>
+            The at( ) method is supported in all modern browsers since March 2022:
+        </p>
+
+        <h4>NOTE:</h4>
+
+        <p>
+            <div>The at( ) method is a new addition to JavaScript.</div>
+            <div>It allows the use of negative indexes while charAt( ) does not.</div>
+            <div>Now you can use myString.at(-2) instead of charAt(myString.length-2)</div>
+        </p>
+
+    <h3>Property Access</h3>
+        <p>
+            Example:
+                <script>
+                    let jello = "Jell-o";
+                    let cgat = jello[3];
+                </script>
+        </p>
+        
+        <h4>NOTE:</h4>
+        
+        <p>
+            Property access might be a little unpredictable:
+                <ul>
+                    <li>It makes strings look like arrays (but they are not)</li>
+                    <li>If no character is found, [ ] returns undefined, while charAt( ) returns an empty string</li>
+                    <li>It is read only. str[0] = "A" gives no error (but does not work!)</li>
+                </ul>
+
                     <script>
-                        const name = "Uncle Chris";
-                        const greeting = `Jell-o, ${name}`;
-                        console.log(greeting)
+                        let mext = "Jell0 W0rld";
+                        mext[0] = "A" // Gives no error, but does not work
                     </script>
-            </p>
+        </p>
 
-            <p>
-                You can use the same technique to join together two variables:
-                    <script>
-                        const one = 'Hello, ';
-                        const two = 'how are you?';
-                        const joined = `${one} ${two}`; // Hello, how are you?
-                    </script>
-            </p>
+    <h2>Extracting String Parts</h2>
+        <p>
+            There are three methods for extracting a part of a string:
+                <ul>
+                    <li>slice(start, end)</li>
+                    <li>substring(start, end)</li>
+                    <li>substr(start, length)</li>
+                </ul>
+        </p>
 
-            <p>
-                This is called concatenation
-            </p>
+    <h3>JavaScript String Slice</h3>
+        <p>
+            slice() extracts part of a string and returns the extracted part in a new string.
+        </p>
+        <p>
+            The method takes 2 parameters: start position, and end position (end not included).
+        </p>
+        <p>
+            Slice out a portion of a string from position 7 to position 13:
+                <script>
+                    let z = 'Apple, Banana, Kiwi';
+                    let part = z.slice(7,13);
+                    console.log(part);
+                </script>
+        </p>
 
-        <h2>Concatenation using "+"</h2>
-            <p>
-                you can use ${} only with template literals, not normal strings. You can concatenate normal strings using the + operator
-                    <script>
-                        const meeting = 'Hello,';
-                        const rane = 'Clarice';
-                        console.log(meeting + ' ' + rane);
-                    </script>
-            </p>
+        <h4>NOTE:</h4>
+        <p>
+            <div>JavaScript counts positions from zero.</div>
+            <div>First position is 0</div>
+            <div>Second position is 1</div>
+        </p>
 
-            <p>
-                However, template literals give us more "readable" code.
-                    <script>
-                        console.log(`${meeting} ${rane}`);
-                    </script>
-            </p>
+        <h4>Examples:</h4>
+        <p>
+            If you omit the second parameter, the method will slice out the rest of the string:
+                <script>
+                    let sart = z.slice(7);
+                    console.log(sart);
+                </script>
+        </p>
+        <p>
+            If a parameter is negative, the position is counted from the end of the string:
+                <script>
+                    let fart = z.slice(-12);
+                    console.log(fart);
+                </script>
+        </p>
+        <p>
+            This example slices out a portion of a string from position -12 to position -6:
+                <script>
+                    let cart = z.slice(-12, -6);
+                    console.log(cart);
+                </script>
+        </p>
 
-        <h2>Including expressions in strings</h2>
-            <p>
-                You can include JavaScript expressions in template literals, as well as just variables, and the results will be included in the result:
-                    <script>
-                        const song = 'Fight for your right.. to party!';
-                        const score = '9';
-                        const highScore = '10';
-                        const output = `I like the song, ${song}. I give it a score of ${
-                            ((score - 1) / highScore) * 100
-                        }%`;
-                        console.log(output);
-                    </script>
-            </p>
 
-        <h2>Multiline Strings</h2>
-            <p>
-                Template literals respect the line breaks in the source code, so you can write strings that span multiple lines.
-                    <script>
-                        const newLine = 
-                        `And you, oh my soul
-                        where you stand,
-                        surrounded,
-                        detached,
-                        In measureless oceans of space
-
-                        'Til the bridge you need be form'd
-                        'Til the ductile anchor hold
-                        'Til the gossamer thread you fling, catch somewhere
-                        Oh, my soul `;
-                        console.log(newLine)
-                    </script>
-            </p>
-
-            <p>
-                To have the equivalent output using a normal string you'd have to include line break characters (\n) in the string
-                    <script>
-                        const newNewLine = "Where you stand, \n surrounded, \n detached"
-                        console.log(newNewLine)
-                    </script>
-            </p>
-
-        <h2>Including quotes in strings</h2>
-            <p>
-                Since we use quotes to indicate the start and end of strings, how can we include actual quotes in strings?
-            </p>
-
-            <p>
-                One common option is to use one of the characters to declare the string:
-                    <script>
-                        const goodQuote1 = 'She said, "Cool it buddy. This is a Chuck E. Cheese"';
-                        const goodQuote2 = `She said, "Just let it go. I'm already gone"`;
-                        console.log(goodQuote1)
-                    </script>
-            </p>
-
-            <p>
-                Another option is to escape the problem quotation mark. Escaping characters means that we do something to them to make sure they are recognized as text, not part of the code.
-                In JavaScript, we do this by putting a backslash before the character.
-                    <script>
-                        const ADTR = 'I\'m already gone. Making rounds.';
-                        console.log(ADTR)
-                    </script>
-            </p>
-
-            <p>
-                You can use the same technique to insert other special characters.
-            </p>
-
-        <h2>Numbers vs. Strings</h2>
-            <p>
-                What happens when we try to concatenate a string and a number?
-                    <script>
-                        const street = "College Ave"
-                        const number = 5721 
-                        console.log(number + ' ' + street)
-                    </script>
-            </p>
-
-            <p>
-                The browser automatically converts the number to a string and concatenates the two strings
-            </p>
-
-            <p>
-                If you have a numeric variable that you want to convert to a string or a string variable that you want to convert to a number, you can use the following two constructs:
-                    <ul>
-                        <li>The number function converts anything passed to it into a number if it can. Try the following:</li>
-                    </ul>
-                        <script>
-                            const youADick = "987";
-                            const myMum = Number(youADick);
-                            console.log(typeof myMum);
-                        </script>
-                    <ul>
-                        <li>Conversely, the string() function converts its argument to a string. Try this:</li>
-                    </ul>
-                        <script>
-                            const youAPuss = 987;
-                            const myDud = String(youAPuss);
-                            console.log(typeof myDud);
-                        </script>
-            </p>
-
-            <p>
-                These constructs can be useful in some situations. For examples, if a user enters a number into a form's text field, it's a string. However, if you want to add this number to something, you'll need it to be a number, so you could pass it through Number() to handle this. 
-            </p>
-
-    </body>
+</body>
 </html>
