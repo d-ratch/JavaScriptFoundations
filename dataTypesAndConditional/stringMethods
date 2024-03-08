@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js"></script>
+    <title>JS Data Types and Conditionals</title>
+</head>
+    <body>
+        <ul>
+            <a href="dataTypesAndConditionals">Ape One</a>
+            <a href="thePowerOfWords">Ape One</a>
+        </ul>
+
+    <h1>NONE OF THE CONTENT IS MY OWN</h1>
+    <h1>EVERYTHING IS COPIED FROM: <a href=https://www.w3schools.com/js/js_string_methods.asp>W3 String Methods</a> </h1>
+    
+    <h1> JavaScript String Methods</h1> 
+
+    <h2>JavaScript String Length</h2>
+            <p>
+                The length property returns the length of the String
+                    <script>
+                        let text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        let length = text.length;
+                    </script>
+            </p>
+
+    <h2>Extracting String Characters</h2>
+        <p>
+            There are four methods for extracting string characters:
+                <ul>
+                    <li>The at(position) Method</li>
+                    <li>The charAt(position) Method</li>
+                    <li>The charCodeAt(position) Method</li>
+                    <li>Using property access [] like in arrays</li>
+                </ul>
+        </p>
+
+    <h3>JavaScript String charAt( )</h3>
+        <p>
+            The charAt( ) method returns the character at a specified index (position) in a string:
+                <script>
+                    let txt = "Jell-o World!";
+                    let char = txt.charAt(0);
+                    console.log(char);
+                </script>
+        </p>
+
+    <h3>JavaScript String charCodeAt( )</h3>
+        <p>
+            The charCodeAt( ) method returns the code of the character at a specified index in a string:
+        </p>
+        <p>
+            The  method returns a UTF-16 code (an integer between 0 and 65535)
+                <script>
+                    let charCode = txt.charCodeAt(0);
+                    console.log(charCode);
+                </script>
+        </p>
+    
+    <h3>JavaScript String at( )</h3>
+        <p>
+            ES2022 introduced the string method at( ):
+                <script>
+                    const name = "D-Ratch";
+                    let letter = name.at(2);
+                    let ketter = name[4];
+                    console.log(ketter);
+                </script>
+        </p>
+        <p>
+            The at( ) method returns the character at a specified index (position) in a string.
+        </p>
+        <p>
+            The at( ) method is supported in all modern browsers since March 2022:
+        </p>
+
+        <h4>NOTE:</h4>
+
+        <p>
+            <div>The at( ) method is a new addition to JavaScript.</div>
+            <div>It allows the use of negative indexes while charAt( ) does not.</div>
+            <div>Now you can use myString.at(-2) instead of charAt(myString.length-2)</div>
+        </p>
+
+    <h3>Property Access</h3>
+        <p>
+            Example:
+                <script>
+                    let jello = "Jell-o";
+                    let cgat = jello[3];
+                </script>
+        </p>
+        
+        <h4>NOTE:</h4>
+        
+        <p>
+            Property access might be a little unpredictable:
+                <ul>
+                    <li>It makes strings look like arrays (but they are not)</li>
+                    <li>If no character is found, [ ] returns undefined, while charAt( ) returns an empty string</li>
+                    <li>It is read only. str[0] = "A" gives no error (but does not work!)</li>
+                </ul>
+
+                    <script>
+                        let mext = "Jell0 W0rld";
+                        mext[0] = "A" // Gives no error, but does not work
+                    </script>
+        </p>
+
+    <h2>Extracting String Parts</h2>
+        <p>
+            There are three methods for extracting a part of a string:
+                <ul>
+                    <li>slice(start, end)</li>
+                    <li>substring(start, end)</li>
+                    <li>substr(start, length)</li>
+                </ul>
+        </p>
+
+    <h3>JavaScript String Slice</h3>
+        <p>
+            slice() extracts part of a string and returns the extracted part in a new string.
+        </p>
+        <p>
+            The method takes 2 parameters: start position, and end position (end not included).
+        </p>
+        <p>
+            Slice out a portion of a string from position 7 to position 13:
+                <script>
+                    let z = 'Apple, Banana, Kiwi';
+                    let part = z.slice(7,13);
+                    console.log(part);
+                </script>
+        </p>
+
+        <h4>NOTE:</h4>
+        <p>
+            <div>JavaScript counts positions from zero.</div>
+            <div>First position is 0</div>
+            <div>Second position is 1</div>
+        </p>
+
+        <h4>Examples:</h4>
+        <p>
+            If you omit the second parameter, the method will slice out the rest of the string:
+                <script>
+                    let sart = z.slice(7);
+                    console.log(sart);
+                </script>
+        </p>
+        <p>
+            If a parameter is negative, the position is counted from the end of the string:
+                <script>
+                    let fart = z.slice(-12);
+                    console.log(fart);
+                </script>
+        </p>
+        <p>
+            This example slices out a portion of a string from position -12 to position -6:
+                <script>
+                    let cart = z.slice(-12, -6);
+                    console.log(cart);
+                </script>
+        </p>
+
+    <h3>JavaScript String substring( )</h3>
+        <p>
+            substring( ) is similar to slice.
+            The difference is that start and end values less than 0 are as 0 in substring( ).
+                <script>
+                    let str = "Apple, Banana, Kiwi";
+                    let x = str.substring(7, 14);
+                    console.log(x);
+                </script>
+        </p>
+        <p>
+            If you omit the second parameter, substring( ) will slice out the rest of the string.
+        </p>
+
+    <h3>JavaScript String substr( )</h3>
+        <p>
+            substr( ) is similar to slice.
+            The difference is that the second parameter specifies the length of the extracted part.
+                <script>
+                    let c = str.substr(7,4)
+                    console.log(c);
+                </script>
+        </p>
+        <p>
+            If you omit the second parameter, substr( ) will slice out the rest of the string.
+                <script>
+                    let v = str.substr(7);
+                    console.log(v);
+                </script>
+        </p>
+        <p>
+            If the first parameter is negative, the position counts from the end of the string.
+                <script>
+                    let b = str.substr(-4);
+                    console.log(b);
+                </script>
+        </p>
+
+    <h2>Converting to Upper and Lower case</h2>
+        <p>
+            A string is converted to uppercase with toUpperCase( ).
+        </p>
+        <p>
+            A string is converted to lowercase with toLowerCase( ).
+                <script>
+                    let jolo = "Jell-o world"
+                    let jolo2 = jolo.toUpperCase();
+                    let jolo3 = jolo2.toLowerCase();
+                    console.log(jolo2);
+                    console.log(jolo3);
+                </script>
+        </p>
+
+    <h2>JavaScript String concact( )</h2>
+        <p>
+            concat joins two or more strings: 
+                <script>
+                    let holo = "Jell-o";
+                    let solo = "World";
+                    let concat = holo.concat(" ", solo);
+                    console.log(concat);
+                </script>
+        </p>
+        <p>
+            The concat( ) method can be used instead of the plus operator, but they do the same thing.
+                <script>
+                    let molo = holo + " " + solo;
+                    console.log(molo);
+                </script>
+        </p>
+
+        <h4>NOTE:</h4>
+            <p>
+                All string methods return a new string. They don't modify the original string.
+                Formally said, Strings are immutable: String cannot be changed, only replaced.
+            </p>
+
+        <h2>JavaScript String trim( )</h2>
+            <p>
+                The trim method removes whitespace from both sides of a string:
+                    <script>
+                        let space = "       Jell-o!      ";
+                        let noSpace = space.trim();
+                        console.log(noSpace);
+                    </script>
+            </p>
+
+        <h2>JavaScript String trimStart( )</h2>
+        <p>
+            ECMAScript 2019 added the String method trimStart( ) to JavaScript.
+            The trimStart( ) method works like trim( ), but only removes whitespace from the beginning.
+                <script>
+                    let noSpaceStart = space.trimStart();
+                    console.log(noSpaceStart);
+                </script>
+        </p>
+
+        <h2>JavaScript String trimEnd( )</h2>
+        <p>
+            ECMAScript 2019 added the String method trimEnd( ) to JavaScript.
+            The trimEnd( ) method works like trim( ), but only removes whitespace from the end.
+                <script>
+                    let noSpaceEnd = space.trimEnd();
+                    console.log(noSpaceEnd);
+                </script>
+        </p>
+
+    <h2>JavaScript String Padding</h2>
+        <p>
+            FCMAScript 2017 added two new string methods to JavaScript: padStart( ) and padEnd( ) to support padding at the beginning and at the end of a string.
+        </p>
+
+    <h3>JavaScript String padStart( )</h3>
+        <p>
+            the padStart method pads a string from the start.
+            It pads a string with another string (multiple times) until it reaches a given length.
+        </p>
+        <p>
+            Pad a string with "0" until it reaches the length 4:
+                <script>
+                    let pad = "5";
+                    let padOne = pad.padStart(4, "0");
+                    let padTwo = pad.padStart(4, "x");
+                    console.log(padTwo);
+                </script>
+        </p>
+
+    <h4>NOTE:</h4>
+        <p>
+            The padStart( ) method is a string method.
+            To pad a number, convert the number to a string first.
+                <script>
+                    let numb = 5;
+                    let textNumb = numb.toString();
+                    let padNumb = textNumb.padStart(4, "0");
+                    console.log(padNumb);
+                </script>
+        </p>
+
+    <h3>JavaScript String padEnd( )</h3>
+        <p>
+            the padEnd method pads a string from the end.
+            It pads a string with another string (multiple times) until it reaches a given length.
+        </p>
+        <p>
+                <script>
+                    padEnd = pad.padEnd(4, "0");
+                    padEndX = pad.padEnd(4, "x");
+                    console.log(padTwo);
+                </script>
+        </p>
+
+    <h4>NOTE:</h4>
+        <p>
+            The padEnd( ) method is a string method.
+            To pad a number, convert the number to a string first.
+                <script>
+                    let numb1 = 5;
+                    let textNumb1 = numb.toString();
+                    let padNumb1 = textNumb.padEnd(4, "8");
+                    console.log(padNumb1);
+                </script>
+        </p>
+
+    <h3>JavaScript String repeat</h3>
+        <p>
+            The repeat( ) method returns a string with a number of copies of a string.
+            The repeat( ) method returns a new string.
+            The repeat( ) method does not change the original string.
+        </p>
+        <p>
+            Create copies of text:
+                <script>
+                    let rep = "ott";
+                    let res = rep.repeat(4);
+                    console.log(res);
+                </script>
+        <h4>Syntax:</h4>
+             string.repeat(count)
+        </p>
+
+    <h2>Replacing String Content</h2>
+        <p>
+            The replace( ) method replaces a specified value with another value in a string:
+                <h4>Example:</h4>
+                    By default, the replace( ) method only replaces the first match:
+                        <script>
+                            let excite = "I'm super stoked on my new Emi!";
+                            let newExcite = excite.replace("Emi", "Kaizen");
+                            console.log(newExcite)
+                        </script>
+        </p>
+    <h4>NOTE:</h4>
+        <p>
+            The replace( ) method does not change the string it is called on.
+            The replace( ) method returns a new String.
+            The replace( ) method only replaces the first match
+            If you want to replace all matches, use a regular expression with the /g flag set.
+        </p>
+        <p>
+            By default, the replace( ) method is case sensitive. Writing EMI will not work, but you can use a regular expression with an /i flag (insensitive)
+                <script>
+                    let newNewExcite = excite.replace(/EMI/i, "Aeron");
+                    console.log(newNewExcite);
+                </script>
+                    <p>
+                        Note that regular expressions are written without quotes.
+                    </p>
+        </p>
+        <p>
+            To replace all matches, use a regular expression with a /g flag (global match):
+                <script>
+                    let berExcite = "Check out the new apple and apple";
+                    let newBer = berExcite.replace(/apple/g, "Abasi");
+                    console.log(newBer)
+                </script>
+        </p>
+
+    <h2>JavaScript String ReplaceAll( )</h2>
+        <p>
+            In 2021, JavaScript introduced the string method replaceAll( ):
+                <script>
+                    jext = 'My favorite animal is a dog. Dogs are the best. I love dogs so much. Dogs, dogs, dogs!'
+                    seri = jext.replaceAll("Dogs", "Cats");
+                    seri = jext.replaceAll("dogs", "cats");
+                    console.log(seri);
+                </script>
+                    <p>
+                        The replaceAll( ) method allows you to specify a regular expression instead of a string to be replaced.
+                        If the parameter is a regular expression, the global flag (g) must be set, otherwise a TypeError is thrown.
+                            <script>
+                                geri = jext.replaceAll(/Dogs/g, "Cats");
+                                geri = jext.replaceAll(/dog/g, "cat")
+                                console.log(geri)
+                            </script>
+                                <h4>NOTE:</h4>
+                                    <p>
+                                        replaceAll( ) is a ES2021 feature
+                                    </p>
+                    </p>
+        </p>
+
+    <h2>Converting a String to an array</h2>
+        <p>
+            If you want to work with a string as an array, you can convert it to an array.
+        </p>
+
+    <h3>JavaScript String split( )</h3>
+        <p>
+            A string can be converted to an array with the split( ) method:
+                <script>
+                    text.split(",") // Split on commas
+                    text.split(" ") // Split on spaces
+                    text.split("|") // Split on pipe
+                </script>
+                    <p>
+                        If the separator is omitted, the returned array will contain the whole string in index [0]
+                        If the separator is "", the returned array will be an array of single characters:
+                            <h4>Example:</h4>
+                                <script>
+                                    text.split("")
+                                </script>
+                    </p>
+        </p>
+</body>
+</html>
