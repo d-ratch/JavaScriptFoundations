@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="javascript.js"></script>
-    <title>Logical Operators</title>
+    <title>MDN Conditionals</title>
+
 </head>
     <body>
         <ul>
@@ -13,379 +14,89 @@
             <a href="thePowerOfWords">Ape Two</a>
             <a href="stringMethods">Ape Three</a>
             <a href="coniditionals">Ape Four</a>
+            <a href="logicalOperators">Ape Five</a>
         </ul>
 
-    <h1>NONE OF THE CONTENT IS MY OWN</h1>
-    <h1>EVERYTHING IS COPIED FROM: <a href=https://javascript.info/logical-operators>JavaScript.info Logical Operators</a> </h1>
-    
-    <h1>Logical operators</h1> 
-
-    <h2>The four types of logical operators</h2>
-        <p>
-            There are four logical operators in JavaScript: || (OR), && (AND), ! (NOT), ?? (Nullish Coalescing)
-            <p>
-                Although they are called "logical", they can be applied to values of any type, not only boolean. Their result can be any type as well.
-            </p>
-        </p>
+        <h1>NONE OF THE CONTENT IS MY OWN</h1>
+        <h1>EVERYTHING IS COPIED FROM: <a href=https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals>MDN Conditionals</a> </h1>
         
-        
+        <h1>Making Decisions in your code - Conditionals</h1> 
 
-    <h2>|| OR ||</h2>
-        <p>
-            The "OR" operator is represented with two vertical line symbols:
-                <script>
-                    result = a || b;
-                </script>
-                    <p>
-                        In classical programmingm the logical OR is meant to manipulate boolean values only. If any of its arguments are true, it returns true, otherwise it returns false.
-                            <p>
-                                In JavaScript, the operator is a bit trickier and more powerful. First, what happens with Booleans?
-                                    <h4>There are four logical combinatiosd</h4>
-                                        <script>
-                                            console.log(true || true); // true
-                                            console.log(false || true); // true
-                                            console.log(true || false); // true
-                                            console.log(false || false); // falsed
-                                        </script>
-                                            <p>
-                                                As we can see, the result is always true unless both operands are false
-                                                    <p>
-                                                        If an operand is not a boolean, it's converted to a boolean for evaluation.
-                                                            <p>
-                                                                For instance, the number 1 is treat as true and the number 0 is treated as false"
-                                                                    <script>
-                                                                        if ( 1 || 0) {
-                                                                            // alert( 'truthy!' ); 
-                                                                        }
-                                                                    </script>
-                                                                        <p>
-                                                                            Most of the time, OR || is used in an if statement to test if any given condition is true.
-                                                                                <h4>For Example:</h4>
-                                                                                    <script>
-                                                                                        let hour = 9;
-
-                                                                                        if (hour < 10 || hour > 18) {
-                                                                                            // alert( 'The office is closed' );
-                                                                                        }
-                                                                                    </script>
-                                                                                        <p>
-                                                                                            We can pass in more conditions:
-                                                                                                <script>
-                                                                                                    let hour1 = 12;
-                                                                                                    let isWeekend = true;
-                                                                                                    
-                                                                                                    if (hour1 < 10 || hour > 18 || isWeekend) {
-                                                                                                        // alert( 'The office is closed.' );
-                                                                                                    }
-                                                                                                </script>
-                                                                                        </p>
-                                                                        </p>
-                                                            </p>
-                                                    </p>
-                                            </p>
-                            </p>
-                    </p>
-        </p>
-
-
-
-    <h3>OR || finds the first truthy value</h3>
-        <p>
-            The logic described above is somewhat classical. Now, let's bring in the 'extra' features of JavaScript
+            <h2>Overview:</h2>
                 <p>
-                    The extended algorithm works as follows:
-                        <p>
-                            given multiple OR'd values:
-                                <script>
-                                    result1 = value1 || value2 || value3;
-                                </script>
-
-                                    <p>
-                                        The OR || operator does the following:
-                                            <ul>
-                                                <li>Evaluates operands from left to right</li>
-                                                <li>For each operand, converts it to boolean. If the result is true, stops and returns the original value of that operand.</li>
-                                                <li>If all operands have been evaluated (i.e. all were false), returns the last operand.</li>
-                                            </ul>
-                                                <p>
-                                                    A value is returned in its original form, without the conversion.
-                                                    In other words, a chain of || OR returns the first truthy value of the last one if no truthy value is found.
-                                                        <h4>For Instance:</h4>
-                                                            <script>
-                                                                console.log(1 || 0); //1 (1 is truthy)
-
-                                                                console.log(null || 1); // 1 (1 is the first truthy value)
-                                                                console.log(null || 0 || 1); // 1 (the first truthy value)
-
-                                                                console.log(udefined || null || 0) // 0 (all falsy returns the last value)
-                                                            </script>
-                                                                <p>
-                                                                    This leads to some interesting usage compared to a "pure, classical, boolean-only OR"
-                                                                </p>
-                                                                    <h4>1. Getting the first truthy value from a list of variables or expressions</h4>
-                                                                        <p>
-                                                                            For instance, we have firstName, lastName, and nickName variables, all optional (i.e. can be undefined or have falsy values)
-                                                                        </p>
-                                                                            <p>
-                                                                                Let's use OR || to choose the one that has the data and show it (or "Anonymous" if nothing is set)
-                                                                                    <script>
-                                                                                        let firstName = "";
-                                                                                        let lastName = "";
-                                                                                        let nickName = "Dewey.B";
-
-                                                                                        console.log(firstName || lastName || nickName || "Anonymous"); // Dewey.B
-                                                                                    </script>
-                                                                                        <p>
-                                                                                            If all variables were falsy, "Anonymous" shows up.
-                                                                                        </p>
-                                                                            </p>
-
-                                                        <h4>2. Short-circuit evaluation</h4>
-                                                                            <p>
-                                                                                Another feature of the OR || operator is the so-called "short-circuit" evaluation.
-                                                                            </p>
-                                                                                <p>
-                                                                                    It means that || processes its arguments until the first truthy value is reached, and then the value is returned immediately, without even touching the argument.
-                                                                                </p>
-                                                                                    <p>
-                                                                                        The importance of this feature becomes obvious if an operand isn't juast a value, but an expression with a side effect, such as a variable assignment or a function call. In the example below, the second message is printed, but not the first.
-                                                                                            <script>
-                                                                                                true || console.log("Not printed");
-                                                                                                false || console.log("Printed");
-                                                                                            </script>
-                                                                                    </p>
-                                                                                        <p>
-                                                                                            In the first line, the OR || operator stops the evaluation immediately upon seeing true, so the alert isn't run.
-                                                                                        </p>
-                                                                                            <p>
-                                                                                                Sometimes, people use this feature to execute commands only if the condition of the part is falsy.
-                                                                                            </p>
-                                                                                        
-                                                                                
-                                                </p>
-                                    </p>
-                        </p>
+                    In any programming language, the code needs to make decisions and carry out actions accordingly depending on different inputs. For example, in a game, if a player has 0 lives, then it's game over. 
+                    In a weather app, if it is being looked at in the morning, show a sunrise graphic; show stars and a moon if it's nighttime.
                 </p>
-        </p>
 
-    <h2>&& AND &&</h2>
-        <p>
-            The AND operator is represented with two ampersands &&:
-                <script>
-                    results = a && b;
-                </script>
-        </p>
-            <p>
-                In classical programming, AND returns true if both operands are truthy and false otherwise:
-                    <script>
-                        console.log(true && false); // true
-                        console.log(false && true); // false
-                        console.log(true && false) // false
-                        console.log(false && false) // false
-                    </script>
-            </p>
+
+            <h2>You can have it on one condition!</h2> 
                 <p>
-                    An example with if:
-                        <script>
-                            let hour2 = 12;
-                            let minute = 30;
-
-                            if (hour == 12 && minute == 30) {
-                                console.log('The time is 12:30');
-                            }
-                        </script>
-                </p>
+                    Human beings (and other animals) make decisions that affect their lives all the time. Whether it's small, "should I eat one cookie or two?" (obviously two..), to large, "Should I stay in Lexington MO and hate myself as PIC or move across the country, work at Dartmouth, and learn to code to create a unique career opportunity?"
                     <p>
-                        Just as with OR, any value is allowed as an operand of AND:
-                            <script>
-                                if (1 && 0) {
-                                    console.log("Won't work, because the result is falsy" );
-                                }
-                            </script>
+                        Conditional statements allow us to represent such decision making in JavaScript, from the choice that must be made (for example, "one cookie or two?"), to the resulting outcome of those choices (perhaps the outcome of "ate one cookie", might be "still feel hungry", and the outcome of "ate two cookies" might be "felt full, but mom scolded me for eating all the cookies".)
                     </p>
-                        <p>
-                            <h4>AND "&&" finds the first falsy value</h4>
-                        
-                            given multiple AND'd values:
-                                <script>
-                                    result2 = value1 && value2 && value3;
-                                </script>
-                        </p>
+                </p>
+            
+            
+            <h2>If...else statements</h2>
+                <p>
+                    Let's look at the most common type of conditional you'll use in JavaScript - the humble if...else statement.
+                        <h3>Basic if...else syntax</h3>
                             <p>
-                                The AND && operator does the following:
-                                    <ul>
-                                        <li>Evaluates operands from left to right</li>
-                                        <li>For each operand, converts it to a boolean. If the result is false, stops and returns the original value of that operand.</li>
-                                        <li>If all operands have been evaluated (i.e. all were truthy), returns the last operand</li>
-                                    </ul>
-                            </p>
-                                <p>
-                                    In other words, AND returns the first falsy value or the last value if none were found.
-                                </p>
+                                Basic if...else syntax looks like this:
+                                <script>
+                                    if (condition) {
+                                        /* code to run if the condition is true */
+                                    } else {
+                                        /* run other code if condition is false */
+                                    }
+                                </script>
                                     <p>
-                                        The rules above are similar to OR. The difference is that AND returns the first falsy value, while OR returns the first truthy value.
-                                            <h4>Examples:</h4>
-                                                <script>
-                                                    // if the first operand is truthy,
-                                                    // AND returns the second operand:
-                                                    console.log(1 && 0); // 0
-                                                    cnsole.log(1 && 5); // 5
-
-                                                    // if the first operand is falsy,
-                                                    // AND returns it. The second operand is ignored.
-                                                    console.log(null && 5); // null
-                                                    console.log(0 && "No matter what"); // 0
-                                                </script>
-                                    </p>
-                                        <p>
-                                            We can also pass several values in a row. See how the first one is returned:
-                                                <script>
-                                                    console.log(1 && 2 && null && 3); // null
-                                                </script>
-                                        </p>
-                                            <p>
-                                                When all the values are truthy, the value is returned:
-                                                    <script>
-                                                        console.log(1 && 2 && 3); // 3
-                                                    </script>
-                                            </p>
+                                        <h4>Here we've got:</h4>
+                                            <ol>
+                                                <li>The keyword if followed by parentheses.</li>
+                                                <li>A condition to test, placed inside the parentheses (typically "is the value bigger than this other value?", or "does this value exist"?) The condition makes use of comparison operators.</li>
+                                                <li>A set of curly braces, inside which we have some code - this can be any code we like, and it only runs if the condition returns true</li>
+                                                <li>The keyword else</li>
+                                                <li>Another set of curly braces, inside which we have some more code - this can be any code we like, and only runs if the condition is not true  -  or in other words, the condition is false</li>
+                                            </ol>
                                                 <p>
-                                                    Precedence of AND && is higher than OR ||
+                                                    This code is pretty human-readable - it's saying "if the condition returns true, run code A, else run code B"
                                                 </p>
                                                     <p>
-                                                        Therefore, the code (a && b || c && d) is essentially the same as if the && expressions were in parenthesses: (a && b) || (c && d);
-                                                    </p>
-                                                        <p>
-                                                            Don't replace if with || or &&
-                                                        </p>
-                                                            <p>
-                                                                Sometimes, people use the && operator as a "shorter way to write if".
-                                                            </p>
-                                                                    <h4>For instance:</h4>  
-                                                                    <p>
-                                                                        <script>
-                                                                            let x = 1;
-                                                                            
-                                                                            (x > 0) && console.log('Greater than zero!');
-                                                                        </script>
-                                                                    </p>
-                                                                        <p>
-                                                                            The action on the right part of && would execute only if the evaluation reaches it. That is, only if (x > 0) is true.
-                                                                        </p>
-                                                                            <p>
-                                                                                Although the variant && appears shorter, if is more obvious and tends to be a liitle bit more readable.
-                                                                                So use every construct for its purpose: use "if" if we want if and use && if we want AND.
-                                                                            </p>
-                                                                                                                                                                              
-    <h2>! NOT !</h2>
-        <p>
-            The boolean NOT operator is represented with an exclamation sign "!"
-                <p>
-                    The syntax is pretty simple:
-                        <script>
-                            result3 = !value;
-                        </script>
-                            <p>
-                                The operator accepts a single argument and does the following:
-                                    <ol>
-                                        <li>Converts the operand and boolean type: true/false</li>
-                                        <li>Returns the inverse value</li>
-                                    </ol>
-                                        <p>
-                                            For instance: 
-                                                <script>
-                                                    console.log(!true); //false 
-                                                </script>
-                                                    <p>
-                                                        A double NOT  !! is sometimes used for converting a value to a boolean type:
+                                                        You should note that you don't have to include the else and the second curly brace block - the following is perfectly legal"
                                                             <script>
-                                                                console.log(!!"non-empty string"); // true
-                                                                console.log(!!null); // false
+                                                                if (condition) {
+                                                                    /* code to run if the condition is true */
+                                                                }
+
+                                                                /* run some other code */
                                                             </script>
                                                                 <p>
-                                                                    That is, the first NOT converts the value to a boolean an returns the inverse, and the second NOT inverses it again. In the end, we have a plain value-to-boolean conversion.
-                                                                        <p>
-                                                                            There's a little more verbose way to do the same thing - a built-in Boolean function:
-                                                                                <script>
-                                                                                    console.log(Boolean("Non-empty string")); true
-                                                                                    console.log(Boolean(null)); // false
-                                                                                </script>
-                                                                                    <p>
-                                                                                        The precedence of ! NOT ! is the highest of all logical operators, so it always executes first, before && or ||
-                                                                                    </p>
-                                                                        </p>
+                                                                    However, you need to be careful here - in this case, the second block of code is not controlled by the conditioanl statement, so it always runs, regardless of whether or not the condition is true or false.
+                                                                    This isn't necessarily a bad thing, but it might not be what you want - often you want to run one block of code or the other, not both.
                                                                 </p>
+                                                                    <h3>A real example:</h3>   
+                                                                        <p>
+                                                                            <script>
+                                                                                let shoppingDone = false;
+                                                                                let childsAllowance;
+
+                                                                                if (shoppingDone === true) {
+                                                                                    childsAllowance = 10;
+                                                                                } else {
+                                                                                    childsAllowance = 5;
+                                                                                }
+                                                                            </script>
+                                                                            This code as shown always results in the shoppingDone value returning false, meaning disappointment for our poor child. It'd be up to us to provide the mechanism for the parent to set the shoppingDone variable to true if the child did the shopping.
+                                                                        </p>
                                                     </p>
-                                        </p>
+                                    </p>
                             </p>
                 </p>
-        </p>
 
-        <p>
-            <script>
-                let age = 19;
 
-                if (age >= 19 && age <= 90) {
-                    console.log("The age is greater than 19 but less than 90");
-                } else if (age < 19 || age > 90) {
-                    console.log("You're either too young or too old.");
-                } else if (!(age >= 19 && age <= 90)) {
-                    console.log("You're either too young or too old.");
-                }
-            </script>
-        </p>
-
-        <p>
-            My first attempt:
-            <script>
-                let login = "";
-                let password = "";
-
-                if (login == "Admin") {
-                    console.log("Enter Password")
-                } else if (login == !("Admin")) {
-                    console.log("I don't know you!")
-                } else if (login == "" || null) {
-                    console.log("Whatchya doin' here boyo?")
-                }
-
-                if (password == "TheMaster") {
-                    console.log("Welcome!")
-                } else if (password == !("TheMaster")) {
-                    console.log("Wrong Password")
-                } else if (password == null || "") {
-                    console.log("I don't know you!")
-                } else {
-                    console.log("What are you doing here?")
-                }
-
-            </script>
-        </p>
-
-        <p>
-            The solution: 
-                <script>
-                    let userName = prompt("Who's there?", '');
-
-                    if (userName === 'Admin') {
-                        let pass = prompt('Password?', '');
-
-                            if (pass === 'The Master') {
-                                console.log('Welcome!'); 
-                            } else if (pass === '' || pass === null) {
-                                console.log('Canceled');
-                            } else {
-                                console.log('Wrong Password');
-                            }
-                            
-                    } else if (userName === '' || userName === null) {
-                        console.log('Canceled');
-                    } else {
-                        console.log("I don't know you!")
-                    }
-                </script>
-        </p>
-
-        
-</body>
+            <h2>else if</h2>        
+      
+    </body>
 </html>
