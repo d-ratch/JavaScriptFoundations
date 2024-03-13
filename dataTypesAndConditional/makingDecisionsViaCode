@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js"></script>
+    <title>MDN Conditionals</title>
+
+</head>
+    <body>
+        <ul>
+            <a href="dataTypesAndConditionals">Ape One</a>
+            <a href="thePowerOfWords">Ape Two</a>
+            <a href="stringMethods">Ape Three</a>
+            <a href="coniditionals">Ape Four</a>
+            <a href="logicalOperators">Ape Five</a>
+        </ul>
+
+        <h1>NONE OF THE CONTENT IS MY OWN</h1>
+        <h1>EVERYTHING IS COPIED FROM: <a href=https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals>MDN Conditionals</a> </h1>
+        
+        <h1>Making Decisions in your code - Conditionals</h1> 
+
+            <h2>Overview:</h2>
+                <p>
+                    In any programming language, the code needs to make decisions and carry out actions accordingly depending on different inputs. For example, in a game, if a player has 0 lives, then it's game over. 
+                    In a weather app, if it is being looked at in the morning, show a sunrise graphic; show stars and a moon if it's nighttime.
+                </p>
+
+
+            <h2>You can have it on one condition!</h2> 
+                <p>
+                    Human beings (and other animals) make decisions that affect their lives all the time. Whether it's small, "should I eat one cookie or two?" (obviously two..), to large, "Should I stay in Lexington MO and hate myself as PIC or move across the country, work at Dartmouth, and learn to code to create a unique career opportunity?"
+                    <p>
+                        Conditional statements allow us to represent such decision making in JavaScript, from the choice that must be made (for example, "one cookie or two?"), to the resulting outcome of those choices (perhaps the outcome of "ate one cookie", might be "still feel hungry", and the outcome of "ate two cookies" might be "felt full, but mom scolded me for eating all the cookies".)
+                    </p>
+                </p>
+            
+            
+            <h2>If...else statements</h2>
+                <p>
+                    Let's look at the most common type of conditional you'll use in JavaScript - the humble if...else statement.
+                        <h3>Basic if...else syntax</h3>
+                            <p>
+                                Basic if...else syntax looks like this:
+                                <script>
+                                    if (condition) {
+                                        /* code to run if the condition is true */
+                                    } else {
+                                        /* run other code if condition is false */
+                                    }
+                                </script>
+                                    <p>
+                                        <h4>Here we've got:</h4>
+                                            <ol>
+                                                <li>The keyword if followed by parentheses.</li>
+                                                <li>A condition to test, placed inside the parentheses (typically "is the value bigger than this other value?", or "does this value exist"?) The condition makes use of comparison operators.</li>
+                                                <li>A set of curly braces, inside which we have some code - this can be any code we like, and it only runs if the condition returns true</li>
+                                                <li>The keyword else</li>
+                                                <li>Another set of curly braces, inside which we have some more code - this can be any code we like, and only runs if the condition is not true  -  or in other words, the condition is false</li>
+                                            </ol>
+                                                <p>
+                                                    This code is pretty human-readable - it's saying "if the condition returns true, run code A, else run code B"
+                                                </p>
+                                                    <p>
+                                                        You should note that you don't have to include the else and the second curly brace block - the following is perfectly legal"
+                                                            <script>
+                                                                if (condition) {
+                                                                    /* code to run if the condition is true */
+                                                                }
+
+                                                                /* run some other code */
+                                                            </script>
+                                                                <p>
+                                                                    However, you need to be careful here - in this case, the second block of code is not controlled by the conditioanl statement, so it always runs, regardless of whether or not the condition is true or false.
+                                                                    This isn't necessarily a bad thing, but it might not be what you want - often you want to run one block of code or the other, not both.
+                                                                </p>
+                                                                    <h3>A real example:</h3>   
+                                                                        <p>
+                                                                            <script>
+                                                                                let shoppingDone = false;
+                                                                                let childsAllowance;
+
+                                                                                if (shoppingDone === true) {
+                                                                                    childsAllowance = 10;
+                                                                                } else {
+                                                                                    childsAllowance = 5;
+                                                                                }
+                                                                            </script>
+                                                                            This code as shown always results in the shoppingDone value returning false, meaning disappointment for our poor child. It'd be up to us to provide the mechanism for the parent to set the shoppingDone variable to true if the child did the shopping.
+                                                                        </p>
+                                                    </p>
+                                    </p>
+                            </p>
+                </p>
+
+
+            <h2>else if</h2>
+                <p>
+                    The last example provided us with two choices, or outcomes - but what if we want more than two?
+                </p>     
+                    <p>
+                        There is a way to chain on extra choices/outcomes to your if...else - using else if.
+                        Each extra choice requires an additonal block to put in between if () { } and else { } - check out the following more involved example, 
+                        which could be a part of a simple weather forecast application:
+                        <div>
+                            <label for="weather">Select the weather type today:</label>
+                            <select id ="weather">
+                                <option value="">--Make a choice--</option>
+                                <option value='sunny'>Sunny</option>
+                                <option value='rainy'>Rainy</option>
+                                <option value='snowing'>Snowing</option>
+                                <option value='overcast'>Overcast</option>
+                            </select>
+
+                            <section></section>
+                        </div>
+                            <script>
+                                const select = document.querySelector("select");
+                                const para = document.querySelector("section");
+
+                                select.addEventListener("change", setWeather);
+
+                                function setWeather() {
+                                    const choice = select.value;
+
+                                    if (choice === 'sunny') {
+                                        para.textContent = 
+                                            "It is nice and sunny outside today. Wear shorts! Go to the beach, or park and get an ice cream!";
+                                    } else if (choice === 'rainy') {
+                                        para.textContent =
+                                            "Rain is falling outside; take a rain coat and an umbrella, and don't stay out for too long.";
+                                    } else if (choice === 'snowing') {
+                                        para.textContent = 
+                                            "The snow is coming down - it is freezing! Best to stay in with a cup of hot chocolate, or go build a snowman.";
+                                    } else if (choice === 'overcast') {
+                                        "It isn't raining, but the sky is grey and gloomy; it could turn any minute, so take a rain coat just in case.";
+                                    } else {
+                                        para.textContent = '';
+                                    }
+                                }
+                            </script>
+                            <p>
+                                <ol>
+                                    <li>Here we've got an HTML <select></select> element allowing us to make different weather choices, and a simple paragraph.</li>
+                                    <li>In the JavaScript, we are storing a reference to both the <select></select> and <section></section> elements, and adding an event listener to the "select" element so that when its value is changed, the setWeather() function is run.</li>
+                                    <li>When this function is run, we first set a variable called choice to the current value selected in the "select" element.
+                                        We then use a conditional statment to show different text inside the paragraph depending on what the value of choice is.
+                                        Notice how all the conditions are tested in else if () { } blocks, except the first one, which is tested in an if { } block.
+                                    </li>
+                                    <li>The very last choice, is the else { } block, is basically a "last resort" option - the code inside it will be run if none of the conditions are true. In this case, it serves to empty the text out of the paragraph if nothing is selected, for example, if a user decides to re-select the "--Make a choice--" placeholder option shown at the beginning.</li>
+                                </ol>
+                            </p>
+                    </p>
+
+
+                <h2>A note on comparison operators</h2>
+                    <p>
+                        Comparison operators are used to test the conditions inside our conditional statements.
+                        Our choices are:
+                            <ul>
+                                <li>"===" and "!==" - Test if one value is identical to, or not identical to, another.</li>
+                                <li>"<" and ">" - Test if one value is less than or greater than another.</li>
+                                <li>"<=" and ">=" - Test if one value is less than or equal to, or greater than or equal to, another.</li>
+                            </ul>
+                                <p>
+                                    Make note of testing boolean (true/false) values, a common pattern you'll come across. 
+                                    Any value that is not false, undefined, null, 0, NaN, or any empty string('') actually returns true when tested as a conditional statement, therefore you can use a variable name on its own to test whether it is true, or even that it exists (that is, it is not undefined.)
+                                    So for example:
+                                        <script>
+                                            let cheese = 'Cheddar';
+
+                                            if (cheese) {
+                                                console.log("Yay! Cheese available for making cheese on toast!");
+                                            } else {
+                                                console.log('No cheese on toast for you today :()');
+                                            }
+                                        </script>
+                                            <p>
+                                                Furthermore, if we return to the chore example above:
+                                                    <script>
+                                                        // We don't need to explicitly specify 'shoppingDone === true'
+                                                        if (shoppingDone) {
+                                                            childsAllowance = 10;
+                                                        } else {
+                                                            childsAllowance = 5;
+                                                        }
+                                                    </script>
+                                            </p>
+                                </p>
+                    </p>
+
+                <h2>Nesting if...else</h2>
+                    <p>
+                        It is perfectly ok to put one if...else statement inside another one - to nest them. For example, we could update our weather forecast application to show a further set of choices depending on what the temperature is:
+                            <script>
+                                if (choice === 'sunny') {
+                                    if (temperature < 86) {
+                                        secion.textContent = `It is ${temperature} degrees outside - nice and sunny. Let's go get an ice cream!`;
+                                    } else if (temperature >= 86) {
+                                        secion.textContent = `It is ${temperature} degrees outside - REALLY HOT! If you go outside, make sure you put on some sunscreen.`;
+                                    }
+                                }
+                            </script>
+                    </p>
+                        <p>
+                            Even though the code all works together, each if...else statement works completely independently of the other one.
+                        </p>
+                
+
+                <h2>Logical operators: AND, OR and NOT</h2>
+                        <p>
+                            If you want to test multiple conditions without writing nested if...else statement, logical operators can help you. When used in conditions, the first two do the following:
+                                <ul>
+                                    <li>&& - AND; allows you to chain together two or more expressions so that all of them have to individually evaluate to true for the whole expression to return true.</li>
+                                    <li>|| - OR; allows you to chain together two or more expressions so that one or more of them have to individually evaluate to true for the whole expressions to return true.</li>
+                                </ul>
+                                    <p>
+                                        For an AND example, let's revisit the temperature code above:
+                                            <script>
+                                                if (choice === 'sunny' && temperature < 86) {
+                                                    secion.textContent = `It is ${temperature} degrees outside - nice and sunny. Let's go get an ice cream!`;
+                                                } else if (choice === 'sunny' && temperature >= 86) {
+                                                    secion.textContent = `It is ${temperature} degrees outside - REALLY HOT! If you go outside, make sure you put on some sunscreen.`;
+                                                }
+                                            </script>
+                                    </p>
+                                        <p>
+                                            So for example, the first code block will only be run if choice === 'sunny' AND temperature is less than 86 return true
+                                        </p>
+                                            <p>
+                                                Let's look at a quick OR example:
+                                                    <script>
+                                                        if (iceCreamVanOutside || houseStatus === 'onFire') {
+                                                            console.log('You should leave the house quicky!');
+                                                        } else {
+                                                            console.log('You should probably stay inside then');
+                                                        }
+                                                    </script>
+                                            </p>
+                                                <p>
+                                                    The last of the logical operators is NOT and is expressed with an explanation point "!". It can be used to negate an expression. Let's combine it with OR in the example above:
+                                                        <script>
+                                                            if (!(iceCreamVanOutside || houseStatus === 'onFire')) {
+                                                            console.log('You should probably stay inside then');
+                                                            } else {
+                                                                console.log('You should leave the house quicky!');
+                                                            }
+                                                        </script>
+                                                            <p>
+                                                                In this snippet, if the OR statement returns true, the NOT operator will negate it so that the overall expressiobn returns false.
+                                                            </p>
+                                                </p>
+                                                    <p>
+                                                        You can combine as many logical statements together as you want, in whatever structure. The following example executes the code inside only if both OR statements return true, meaning that the overall AND statement will return true:
+                                                            <script>
+                                                                // if ((x === 5 || y > 3 || z <= 10)) && (loggedIn || userName === "Steve") {
+                                                                //     // run the code
+                                                                // }
+                                                            </script>
+                                                    </p>
+                                                        <p>
+                                                            A common mistake when using the logical operator OR in conditional statements is to try to state the variable whose value you are checking once, and then give a list of value it could be to return true, separated by || (OR) operators. For example:
+                                                                <script>
+                                                                    if (x === 5 || 7 || 10 || 20) {
+                                                                        // run my code
+                                                                    }
+                                                                </script>
+                                                                    <p>
+                                                                        In this case, the condition inside if () will always evaluate to true sicne 7 (or any other non-zero value) always evaluates to true. This condition is actually saying 'If x equals 5, or 7 is true - which it always is'. This is logically not what we want! To make this work you've got to specify a complete test on either side of each OR operator:
+                                                                            <script>
+                                                                                if (x === 5 || x === 7 || x === 10 || x === 20) {
+                                                                                    // run my code
+                                                                                }
+                                                                            </script>
+                                                                    </p>
+                                                        </p>
+                        </p>
+
+
+                <h2>Switch Statements (think SwiftUI enum)</h2>
+                        <p>
+                            if...else statements do the job of enabling conditional code well, but they also have downsides. 
+                            They are mainly good for cases where you've got a couple of choices, and each one requires a reasonable amount of code to be run, and/or the conditions are complex (for example, multiple logical operators).
+                            For cases where you just want to set a variable to a certain choice of value or print out a particular statement depending on a condition, the syntax can be a bit cumbersome, especially if you've got a large number of choices.
+                                <p>
+                                    In such a case, switch statements are your friend - they take a single expression/value as an input, and then look through several choices until they find one that matches that value, executing the corresponding code that goes along with it.
+                                    Here's some pseudocode, to give you an idea:
+                                        <script>
+                                            switch (expression) {
+                                                case choice1:
+                                                    // run this code
+                                                    break;
+                                                
+                                                case choice2:
+                                                    // run this code instead
+                                                    break;
+                                                    
+                                                // include as many as you want
+
+                                                default:
+                                                    // actually, just run this code
+                                                    break;
+                                            }
+                                        </script>
+                                            <p>
+                                                Here we've got:
+                                                    <ol>
+                                                        <li>The keyword switch, followed by a set of parentheses</li>
+                                                        <li>An expression or value inside the parentheses</li>
+                                                        <li>The keyword case, followed by a choice that the expression/value could be, followed by a colon</li>
+                                                        <li>Some code to run if the choice matches the expression</li>
+                                                        <li>A break statement, followed by a semicolon. If the previous choice matches the expression/value, the browser stops executing the code block here, and moves on to any code that appears below the switch statement</li>
+                                                        <li>As many other cases as you want</li>
+                                                        <li>The keyword default, followed by exactly the same code pattern as one of the cases (bullets 3-5), except that default does not have a choice after it, and you don't need the break statement as there is nothing to run after this anyway. This is the default option that runs if none of the choices match.</li>
+                                                    </ol>
+                                                        <p>
+                                                            Note: You don't have to include the default section - you can safely omit it if there is no chace the expression could end up equaling an unknown value. If there is a chance of this, however, you need to include it to handle unknown cases.
+                                                        </p>
+                                            </p>
+                                </p>
+                        </p>
+
+
+                <h2>A switch example:</h2>
+                        <p>
+                            Let's look at a real example - we'll rewrite our weather forecast application to use a switch statement instead:
+                            <p>
+                                <label for="weather">Select the weather type today:</label>
+                                    <select id="weather">
+                                        <option value="">--Make a choice--</option>
+                                        <option value="sunny">Sunny</option>
+                                        <option value="rainy">Rainy</option>
+                                        <option value="snowing">Snowing</option>
+                                        <option value="overcast">Overcast</option>
+                                    </select>
+
+                                        <p></p>
+
+                                            <script>
+                                                const select1 = document.querySelector("select");
+                                                const para1 = document.querySelector("p");
+
+                                                select.addEventListener("change", setWeather1);
+
+                                                function setWeather1() {
+                                                    const choice = select1.value
+
+                                                    switch(choice) {
+                                                        case 'sunny':
+                                                            para.textContent = 'It is sunny'
+                                                            break;
+
+                                                        case 'rainy':
+                                                            para.textContent = 'It is rainy'
+                                                            break;
+
+                                                        case 'snowing':
+                                                            para.textContent = 'It is snowing'
+                                                            break;
+
+                                                        case 'overcast':
+                                                            para.textContent = 'It is overcast'
+                                                            break;
+
+                                                        default:
+                                                            para.textContent = '';
+                                                    }
+                                                }
+                                            </script>
+                                </p>
+                        </p>
+
+
+                <h2>Ternary Operator</h2>
+                        <p>
+                            There is one final bit of syntax we want to introduce to you before we get to play with some examples. 
+                            The ternary or conditional operator is a small bit of syntax that tests a condition an returns a value/expression if it is true, and another if it is false - this can be useful in some situations, and can take up a lot less code than an if...else block if you have two choices that are chosen between via a true/false condition. The pseudocode looks like this:
+                                <script>
+                                    /* condition ? run this code : run this code instead */
+                                </script>
+                                    <p>
+                                        So let's looke at a simple example:
+                                            <script>
+                                                const greeting = isBirthday
+                                                ? "Happy birthday Mrs. Smith -  we hope you have a great day!"
+                                                : "Good morning Mrs. Smith.";
+                                            </script>
+                                                <p>
+                                                    Here we have a variable called isBirthday - if this is true, we give our guest a happy birthday message; if not, we give here the standard daily greeting.
+                                                </p>
+                                    </p>
+                        </p>
+
+                <h2>Ternary Operator example:</h2>
+                        <p>
+                            The ternary operator is not just for setting variable values; you can also run fuctions, or lines of code - anything you like. 
+                            The following example shows a simple theme chooser where the styling for the site is applied using a ternary operator.
+                                <div>
+                                    <label for="theme">Select theme:</label>
+                                    <select id="theme">
+                                        <option value="white">White</option>
+                                        <option value="black">Black</option>
+                                    </select>
+
+                                    <h1>This is my website</h1>
+                                </div>
+                                    <script>
+                                        const selectTheme = document.querySelector("select");
+                                        const html = document.querySelector("html");
+                                        document.body.style.padding = "10px";
+
+                                        function update(bgColor, textColor) {
+                                            html.style.backgroundColor = bgColor;
+                                            html.style.color = textColor;
+                                        }
+
+                                        select.addEventListener("change", () =>
+                                            select.value === 'black'
+                                            ? update('black', 'white')
+                                            : update('white', 'black'),
+                                        ); 
+                                    </script>
+                                        <p>
+                                            Here we've got a "select" element to choose a theme (black or white), plus a simple h1 to display the website title.
+                                            We also have a function called update(), which takes two colors as parameters (inputs).
+                                            The website's background color is set to the first provided color, and its text color is set to the second provided color.
+                                                <p>
+                                                    Finally, we've also got an onChange event listener that serves to run a function containing a ternary operator.
+                                                    It starts with a test condition - select.value === 'black'.
+                                                    If this returns true, we run the update() funcion with parameters of black and white, meaning that we end up with a background color of black and a text color of white.
+                                                    If it returns false, we run the update() function with parameters of white and black, meaning that the siet colors are inverted.
+                                                </p>
+                                        </p>
+                                            
+                        </p>
+      
+    </body>
+</html>
